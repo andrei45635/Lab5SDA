@@ -1,5 +1,5 @@
-//#include "TestExtins.h"
-//#include "TestScurt.h"
+#include "TestExtins.h"
+#include "TestScurt.h"
 
 
 #include <iostream>
@@ -7,9 +7,9 @@ using namespace std;
 
 
 int main() {
-	//	testAll();
+	testAll();
 	cout << "Passed short test!\n";
-	//	testAllExtins();
+	testAllExtins();
 	cout << "Passed extended test!\n";
 	cout << "That's all!" << endl;
 	return 0;

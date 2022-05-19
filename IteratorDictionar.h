@@ -14,8 +14,7 @@ private:
 	//contine o referinta catre containerul pe care il itereaza
 	/* aici e reprezentarea specifica a iteratorului */
 	const Dictionar& dict;
-	Node* firstNode;
-	Node* current;
+	//Node* current;
 	int index;
 
 public:

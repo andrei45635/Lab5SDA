@@ -11,16 +11,17 @@ Dictionar::Dictionar() {
 	*  CM: 0(this->size)
 	*/
 	this->size = INIT_SIZE;
-	for (int i = 0; i < this->size; i++) {
-		this->elems[i]->first = -1;
-		this->elems[i]->second = -1;
+	for (int i = 0; i < this->size-1; i++) {
+		//this->elems[i]->first = NULL_TVALOARE;
+		//this->elems[i]->second = NULL_TVALOARE;
+		this->elems[i] = 0;
 		this->urm[i] = -1;
 	}
 	this->primLiber = 0;
 }
 
-int Dictionar::hashF(Node* elem) {
-	return abs(elem->key) % this->size;
+int Dictionar::hashF(TCheie c) {
+	return abs(c) % this->size;
 }
 
 Dictionar::~Dictionar() {
@@ -36,7 +37,7 @@ void Dictionar::updatePrimLiber() {
 
 TValoare Dictionar::adauga(TCheie c, TValoare v) {
 	/* de adaugat */
-	int i = (abs(c) % this->size); //hash function
+	int i = hashF(c); //hash function
 	int prec = 0;
 	if (this->elems[i]->first != -1) {
 		this->elems[i]->first = c;
@@ -71,7 +72,7 @@ TValoare Dictionar::cauta(TCheie c) const {
 	*  CG: O(this->size)
 	*  CM: O(this->size)
 	*/
-	int i = (abs(c) & this->size); //aici era de fapt fct de dispersie dar nu merge
+	auto i = abs(c) % this->size;
 	while (i != -1 && this->elems[i]->first != c) {
 		i = this->urm[i];
 	}
@@ -88,7 +89,7 @@ TValoare Dictionar::sterge(TCheie c) {
 	*  CG: O(this->size)
 	*  CM: O(this->size)
 	*/
-	auto hash_val = (abs(c) % this->size); //valoarea de dispersie
+	auto hash_val = hashF(c);
 	auto prec = -1; // pp ca !E precedent pt vid
 	auto i = 0;
 	while (i < this->size && prec == -1) {
@@ -136,13 +137,20 @@ TValoare Dictionar::sterge(TCheie c) {
 
 int Dictionar::dim() const {
 	/* de adaugat */
-	return this->size;
+	int dim = 0;
+	IteratorDictionar itd = this->iterator();
+	itd.prim();
+	while (itd.valid()) {
+		dim++;
+		itd.urmator();
+	}
+	return dim;
 }
 
 bool Dictionar::vid() const {
 	/* de adaugat */
-	if (this->size < 0) return true;
-	else return false;
+	if (this->size < 0) return false;
+	else return true;
 }
 
 

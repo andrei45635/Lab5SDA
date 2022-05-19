@@ -30,7 +30,7 @@ private:
 	//Node* elem;
 	int urm[INIT_SIZE];
 	int primLiber;
-	int hashF(Node* elem);
+	int hashF(TCheie c);
 	void updatePrimLiber();
 
 public:

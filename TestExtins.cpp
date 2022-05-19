@@ -230,9 +230,9 @@ void testQuantity() {//scopul e sa adaugam multe date
 
 // nu stim reprezentarea, putem testa doar anumite lucruri generale, nu stim in ce ordine vor fi afisate elementele
 void testAllExtins() {
-	testCreeaza();
-	testAdauga();
-	testSterge();
-	testIterator();
-	testQuantity();
+	//testCreeaza();
+	//testAdauga();
+	//testSterge();
+	//testIterator();
+	//testQuantity();
 }
